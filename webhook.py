@@ -30,4 +30,4 @@ if st.button(" Generate Blog"):
         except Exception as e:
             st.error(f" Request to webhook failed: {str(e)}")
     else:
-        st.warning("⚠ Please enter a topic before generating the blog.")
+        st.warning("Please enter a topic before generating the blog.")
