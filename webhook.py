@@ -19,13 +19,12 @@ if st.button(" Generate Blog"):
 
             if response.status_code == 200:
                 st.success("Blog generated and saved to github")
-                st.balloons()  
             else:
                 st.error(f" Failed! Status code: {response.status_code}")
                 try:
                     st.json(response.json())
                 except Exception:
-                    st.text("⚠ Raw response:")
+                    st.text("Raw response:")
                     st.text(response.text)
 
         except Exception as e:
