@@ -24,7 +24,8 @@ if st.button(" Generate Blog"):
                 if github_url:
                     st.success(f' Blog generated and saved to GitHub: [View Blog]({github_url})')
                 else:
-                    st.success(" Blog generated and saved to GitHub.")
+                    st.success("Blog generated and saved to GitHub.")
+
             else:
                 st.error(f" Failed! Status code: {response.status_code}")
                 try:
@@ -36,4 +37,4 @@ if st.button(" Generate Blog"):
         except Exception as e:
             st.error(f" Request to webhook failed: {str(e)}")
     else:
-        st.warning(" Please enter a topic before generating the blog.")
+        st.warning("Please enter a topic before generating the blog.")
