@@ -8,13 +8,13 @@ st.title("AI Blog Generator")
 topic = st.text_input("Enter your blog topic:")
 model_choice = st.selectbox("Choose Model:", ["gemini", "gpt-4o-azure"])
 
-if st.button(" Generate Blog"):
-    if topic:
+If st.button(" Generate Blog"):
+    If topic:
         webhook_url = "https://n8n-production-1992.up.railway.app/webhook/blog-generator"
         headers = {"Content-Type": "application/json"}
         payload = {"topic": topic.strip(), "model": model_choice}
 
-        try:
+        Try:
             response = requests.post(webhook_url, json=payload, headers=headers)
 
             if response.status_code == 200:
@@ -22,19 +22,21 @@ if st.button(" Generate Blog"):
                 github_url = data.get("github_url")
 
                 if github_url:
-                    st.success(f' Blog generated and saved to GitHub: [View Blog]({github_url})')
-                else:
+                    st. markdown(
+                        f'Blog generated and saved to GitHub: <a href="{github_url}" target="_blank"><b>View Blog</b></a>',
+                        unsafe_allow_html=True
+                    )
+                Else:
                     st.success("Blog generated and saved to GitHub.")
-
-            else:
+            Else:
                 st.error(f" Failed! Status code: {response.status_code}")
-                try:
+                Try:
                     st.json(response.json())
-                except Exception:
+                Except Exception:
                     st.text("Raw response:")
                     st.text(response.text)
 
-        except Exception as e:
+        Except Exception as e:
             st.error(f" Request to webhook failed: {str(e)}")
-    else:
+    Else:
         st.warning("Please enter a topic before generating the blog.")
