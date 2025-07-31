@@ -22,13 +22,13 @@ if st.button(" Generate Blog"):
             github_url = data.get("github_url")
 
             if github_url:
-                st.success("Blog generated and saved to GitHub.")
+                st.success(" Blog generated and saved to GitHub.")
                 st.markdown(
                     f'<a href="{github_url}" target="_blank"><button style="padding:8px 16px; background-color:#4CAF50; color:white; border:none; border-radius:4px; cursor:pointer;">View Blog</button></a>',
                     unsafe_allow_html=True
                 )
             else:
-                st.success("Blog generated and saved to GitHub.")
+                st.success(" Blog generated and saved to GitHub.")
         else:
             st.error(f" Failed! Status code: {response.status_code}")
             try:
